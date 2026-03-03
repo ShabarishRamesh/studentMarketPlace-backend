@@ -12,8 +12,23 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
+    required: function() {
+      return !this.isFirebaseUser; // only required if not a Firebase user
+    }
   },
+  isFirebaseUser: {
+    type: Boolean,
+    default: false
+  },
+  firebaseUid: {
+    type: String,
+    default: null
+  }
 }, { timestamps: true });
+
+userSchema.pre("validate", function(next) {
+  if (this.isFirebaseUser) this.password = undefined; // skip password validation
+  next();
+});
 
 module.exports = mongoose.model("User", userSchema);
