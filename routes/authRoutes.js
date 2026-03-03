@@ -8,7 +8,7 @@ const admin = require("../firebaseAdmin"); // Firebase Admin SDK
 // =======================
 // Email/Password Signup
 // =======================
-router.post("/signup", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -43,7 +43,7 @@ router.post("/signup", async (req, res) => {
 // =======================
 // Email/Password Login
 // =======================
-router.post("/login", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { email, password } = req.body;
 
