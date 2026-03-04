@@ -8,11 +8,7 @@ const productRoutes = require("./routes/productRoutes");
 const cartRoutes = require("./routes/cartRoutes");
 
 const app = express();
-<<<<<<< HEAD
-const PORT = process.env.PORT
-=======
 const PORT = process.env.PORT || 3500;
->>>>>>> 9985af06ec595854f755ca04f5757e86ff6ea36a
 
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 app.use(express.json());
